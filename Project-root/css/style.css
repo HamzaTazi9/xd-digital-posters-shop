@@ -176,6 +176,10 @@ body {
   padding: 0 10px;
 }
 
+.product-grid-section {
+  padding: 40px 100px;
+}
+
 .section-title {
   font-size: 28px;
   font-weight: 400;

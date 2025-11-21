@@ -1,9 +1,22 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  overflow-x: hidden;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    sans-serif;
+}
 .navbar {
   width: 100%;
-  border-bottom: 1px solid #eee;
-  background: #fff;
-  position: sticky;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(10px);
+  position: absolute;
   top: 0;
+  left: 0;
   z-index: 1000;
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
     sans-serif;
@@ -13,7 +26,6 @@
   max-width: 1200px;
   margin: 0 auto;
   padding: 12px 20px;
-
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -24,39 +36,118 @@
   font-size: 20px;
   font-weight: 700;
   text-decoration: none;
-  color: #000;
+  color: #ececec;
   letter-spacing: 0.08em;
   text-transform: uppercase;
+  transform: scaleX(-1);
 }
 
-.nav-links {
+.links {
   display: flex;
   gap: 24px;
 }
 
-.nav-links a {
+.links a {
   text-decoration: none;
-  color: #000;
+  color: #ececec;
   font-size: 14px;
   text-transform: uppercase;
   letter-spacing: 0.1em;
+  transition: opacity 0.3s ease;
 }
 
-.nav-links a:hover {
-  opacity: 0.6;
+.links a:hover {
+  opacity: 0.7;
 }
 
 .nav-actions {
   display: flex;
   gap: 18px;
+  align-items: center;
 }
-
-.nav-actions .nav-link {
+.nav-actions a {
   text-decoration: none;
-  color: #000;
+  color: #fff; /* WIT */
   font-size: 14px;
+  transition: opacity 0.3s ease;
 }
 
-.nav-actions .nav-link:hover {
-  opacity: 0.6;
+.nav-actions a:hover {
+  opacity: 0.7;
+}
+
+.nav-actions img {
+  width: 22px;
+  height: 22px;
+  filter: brightness(0) invert(1);
+}
+
+.hero {
+  width: 100vw;
+  height: 60vh;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 1;
+}
+
+.hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.35);
+  z-index: 2;
+}
+
+.hero-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  z-index: 3;
+  color: #fff;
+}
+
+.hero-content h1 {
+  font-size: 48px;
+  margin-bottom: 12px;
+  letter-spacing: 0.05em;
+  font-weight: 700;
+}
+
+.hero-content p {
+  font-size: 16px;
+  margin-bottom: 30px;
+  letter-spacing: 0.1em;
+  opacity: 0.9em;
+}
+
+.hero-btn {
+  display: inline-block;
+  padding: 12px 32px;
+  background: #fff;
+  color: #000;
+  border-radius: 30px;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-size: 14px;
+  letter-spacing: 0.1em;
+  transition: all 0.3s ease;
+}
+
+.hero-btn:hover {
+  background: rgba(255, 255, 255, 0.9);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
 }

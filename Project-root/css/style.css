@@ -421,6 +421,75 @@ body {
   opacity: 0.6;
 }
 
+.about-hero {
+  padding: 200px 20px 80px;
+  text-align: center;
+  background: #fff;
+}
+
+.about-hero h1 {
+  font-size: 42px;
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+
+.about-hero p {
+  font-size: 16px;
+  color: #666;
+}
+
+.about-content {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 60px 20px 80px;
+  background: #fff;
+}
+
+.about-section {
+  margin-bottom: 60px;
+}
+
+.about-section h2 {
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+
+.about-section p {
+  font-size: 15px;
+  line-height: 1.8;
+  color: #333;
+  margin-bottom: 16px;
+}
+
+.values-list {
+  list-style: none;
+  padding: 0;
+}
+
+.values-list li {
+  font-size: 15px;
+  line-height: 1.8;
+  color: #333;
+  margin-bottom: 12px;
+}
+
+.values-list strong {
+  font-weight: 600;
+  color: #000;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .about-hero {
+    padding: 140px 20px 60px;
+  }
+
+  .about-hero h1 {
+    font-size: 32px;
+  }
+}
+
 @media (max-width: 768px) {
   .footer-content {
     grid-template-columns: repeat(2, 1fr);

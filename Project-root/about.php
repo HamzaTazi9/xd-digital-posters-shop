@@ -1,3 +1,6 @@
+
+
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -7,27 +10,7 @@
     <link rel="stylesheet" href="css/style.css" />
   </head>
   <body>
-  </head>
-  <body>
-      <header class="navbar">
-        <div class="nav-container">
-          <a href="index.html" class="logo">Selfique</a>
-
-          <nav class="links">
-            <a href="product.html">Our products</a>
-            <a href="featured.html">Featured</a>
-            <a href="about.html">About</a>
-          </nav>
-          <div class="nav-actions">
-            <a href="login.html"><img src="images/user (1).png" alt="" /></a>
-            <a href="register.html">register</a>
-            <a href="cart.html"
-              ><img src="images/online-shopping.png" alt=""
-            /></a>
-          </div>
-        </div>
-      </header>
-
+  <?php include_once("nav.inc.php"); ?>
     <section class="about-hero">
       <h1>About Selfique</h1>
       <p>Style that fits who you are</p>
@@ -86,44 +69,6 @@
         </p>
       </section>
     </main>
-
-    <footer class="footer">
-      <div class="footer-container">
-        <div class="footer-content">
-          <div class="footer-column">
-            <h3 class="footer-logo">Selfique</h3>
-            <p class="footer-text">Minimal . Bold . Authentic</p>
-          </div>
-
-          <div class="footer-column">
-            <h4 class="footer-title">Shop</h4>
-            <a href="product.html">All Products</a>
-            <a href="product.html?category=clothing">Clothing</a>
-            <a href="product.html?category=accessories">Accessories</a>
-            <a href="product.html?category=featured">Featured</a>
-          </div>
-
-          <div class="footer-column">
-            <h4 class="footer-title">Info</h4>
-            <a href="about.html">About Us</a>
-            <a href="contact.html">Contact</a>
-            <a href="terms.html">Terms</a>
-            <a href="privacy.html">Privacy</a>
-          </div>
-
-          <div class="footer-column">
-            <h4 class="footer-title">Account</h4>
-            <a href="login.html">Login</a>
-            <a href="register.html">Register</a>
-            <a href="orders.html">My Orders</a>
-            <a href="profile.html">Profile</a>
-          </div>
-        </div>
-
-        <div class="footer-bottom">
-          <p>© 2025 Selfique. All rights reserved.</p>
-        </div>
-      </div>
-    </footer>
+    <?php include_once("footer.inc.php"); ?>
   </body>
 </html>

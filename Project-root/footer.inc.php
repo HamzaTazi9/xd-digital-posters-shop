@@ -1,37 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Selfique</title>
-    <link rel="stylesheet" href="css/style.css" />
-  </head>
-  <body>
-  </head>
-  <body>
-    <section class="hero">
-      <header class="navbar">
-        <div class="nav-container">
-          <a href="index.html" class="logo">Selfique</a>
-
-          <nav class="links">
-            <a href="product.html">Our products</a>
-            <a href="featured.html">Featured</a>
-            <a href="about.html">About</a>
-          </nav>
-          <div class="nav-actions">
-            <a href="login.html"><img src="images/user (1).png" alt="" /></a>
-            <a href="register.html">register</a>
-            <a href="cart.html"
-              ><img src="images/online-shopping.png" alt=""
-            /></a>
-          </div>
-        </div>
-      </header>
-
-      
-
-    <footer class="footer">
+<footer class="footer">
       <div class="footer-container">
         <div class="footer-content">
           <div class="footer-column">
@@ -69,5 +36,3 @@
         </div>
       </div>
     </footer>
-  </body>
-</html>

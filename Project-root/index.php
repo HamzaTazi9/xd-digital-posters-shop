@@ -1,37 +1,27 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Selfique</title>
     <link rel="stylesheet" href="css/style.css" />
   </head>
   <body>
-    <header class="navbar navbar-solid">
-      <div class="nav-container">
-        <a href="index.html" class="logo logo-dark">Selfique</a>
+  <?php include_once("nav.inc.php"); ?>
+    <section class="hero">
+      <video class="hero-video" autoplay muted loop playsinline>
+        <source src="images/hero_video.mp4" type="video/mp4" />
+      </video>
 
-        <nav class="links">
-          <a href="product.html">Our products</a>
-          <a href="featured.html">Featured</a>
-          <a href="about.html">About</a>
-        </nav>
-        <div class="nav-actions">
-          <a href="login.html"><img src="images/user (1).png" alt="" /></a>
-          <a href="register.html">register</a>
-          <a href="cart.html"
-            ><img src="images/online-shopping.png" alt=""
-          /></a>
-        </div>
-      </div>
-    </header>
+      <div class="hero-overlay"></div>
 
-    <section class="products-hero">
-      <div class="products-hero-image"></div>
-      <div class="products-hero-overlay"></div>
-      <div class="products-hero-content">
-        <h1>Our Collection</h1>
+      <div class="hero-content">
+        <h1>Wear Your Uniqueness</h1>
         <p>Minimal . Bold . Authentic</p>
+        <a href="product.html" class="hero-btn">Shop Now</a>
       </div>
     </section>
 
@@ -234,44 +224,7 @@
         </div>
       </div>
     </section>
+    <?php include_once("footer.inc.php"); ?>
 
-    <footer class="footer">
-      <div class="footer-container">
-        <div class="footer-content">
-          <div class="footer-column">
-            <h3 class="footer-logo">Selfique</h3>
-            <p class="footer-text">Minimal . Bold . Authentic</p>
-          </div>
-
-          <div class="footer-column">
-            <h4 class="footer-title">Shop</h4>
-            <a href="product.html">All Products</a>
-            <a href="product.html?category=clothing">Clothing</a>
-            <a href="product.html?category=accessories">Accessories</a>
-            <a href="product.html?category=featured">Featured</a>
-          </div>
-
-          <div class="footer-column">
-            <h4 class="footer-title">Info</h4>
-            <a href="about.html">About Us</a>
-            <a href="contact.html">Contact</a>
-            <a href="terms.html">Terms</a>
-            <a href="privacy.html">Privacy</a>
-          </div>
-
-          <div class="footer-column">
-            <h4 class="footer-title">Account</h4>
-            <a href="login.html">Login</a>
-            <a href="register.html">Register</a>
-            <a href="orders.html">My Orders</a>
-            <a href="profile.html">Profile</a>
-          </div>
-        </div>
-
-        <div class="footer-bottom">
-          <p>© 2025 Selfique. All rights reserved.</p>
-        </div>
-      </div>
-    </footer>
   </body>
 </html>

@@ -8,26 +8,26 @@
 
           <div class="footer-column">
             <h4 class="footer-title">Shop</h4>
-            <a href="product.html">All Products</a>
-            <a href="product.html?category=clothing">Clothing</a>
-            <a href="product.html?category=accessories">Accessories</a>
-            <a href="product.html?category=featured">Featured</a>
+            <a href="product.php">All Products</a>
+            <a href="product.php?category=clothing">Clothing</a>
+            <a href="product.php?category=accessories">Accessories</a>
+            <a href="product.php?category=featured">Featured</a>
           </div>
 
           <div class="footer-column">
             <h4 class="footer-title">Info</h4>
-            <a href="about.html">About Us</a>
-            <a href="contact.html">Contact</a>
-            <a href="terms.html">Terms</a>
-            <a href="privacy.html">Privacy</a>
+            <a href="about.php">About Us</a>
+            <a href="contact.php">Contact</a>
+            <a href="terms.php">Terms</a>
+            <a href="privacy.php">Privacy</a>
           </div>
 
           <div class="footer-column">
             <h4 class="footer-title">Account</h4>
-            <a href="login.html">Login</a>
-            <a href="register.html">Register</a>
+            <a href="login.php">Login</a>
+            <a href="register.php">Register</a>
             <a href="orders.html">My Orders</a>
-            <a href="profile.html">Profile</a>
+            <a href="profile.php">Profile</a>
           </div>
         </div>
 

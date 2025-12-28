@@ -21,7 +21,7 @@
       <div class="hero-content">
         <h1>Wear Your Uniqueness</h1>
         <p>Minimal . Bold . Authentic</p>
-        <a href="product.html" class="hero-btn">Shop Now</a>
+        <a href="product.php" class="hero-btn">Shop Now</a>
       </div>
     </section>
 
@@ -32,7 +32,7 @@
     <section class="product-grid-section">
       <div class="container">
         <div class="product-grid">
-          <a href="product-detail.html?id=1" class="product-card">
+          <a href="product-detail.php?id=1" class="product-card">
             <div class="product-image">
               <img src="images/hoodie.jpg" alt="Essential Hoodie Black" />
             </div>
@@ -42,7 +42,7 @@
             </div>
           </a>
 
-          <a href="product-detail.html?id=2" class="product-card">
+          <a href="product-detail.php?id=2" class="product-card">
             <div class="product-image">
               <img src="images/hoodie.jpg" alt="Essential Hoodie Cream" />
             </div>
@@ -52,7 +52,7 @@
             </div>
           </a>
 
-          <a href="product-detail.html?id=3" class="product-card">
+          <a href="product-detail.php?id=3" class="product-card">
             <div class="product-image">
               <img src="images/hoodie.jpg" alt="Signature Tee White" />
             </div>
@@ -62,7 +62,7 @@
             </div>
           </a>
 
-          <a href="product-detail.html?id=4" class="product-card">
+          <a href="product-detail.php?id=4" class="product-card">
             <div class="product-image">
               <img src="images/hoodie.jpg" alt="Signature Tee Black" />
             </div>
@@ -82,7 +82,7 @@
     <section class="product-grid-section">
       <div class="container">
         <div class="product-grid">
-          <a href="product-detail.html?id=5" class="product-card">
+          <a href="product-detail.php?id=5" class="product-card">
             <div class="product-image">
               <img src="images/fo.jpg" alt="Puffer Jacket Black" />
             </div>
@@ -92,7 +92,7 @@
             </div>
           </a>
 
-          <a href="product-detail.html?id=6" class="product-card">
+          <a href="product-detail.php?id=6" class="product-card">
             <div class="product-image">
               <img src="images/fo.jpg" alt="Puffer Jacket Cream" />
             </div>
@@ -102,7 +102,7 @@
             </div>
           </a>
 
-          <a href="product-detail.html?id=7" class="product-card">
+          <a href="product-detail.php?id=7" class="product-card">
             <div class="product-image">
               <img src="images/fo.jpg" alt="Oversized Windbreaker" />
             </div>
@@ -112,7 +112,7 @@
             </div>
           </a>
 
-          <a href="product-detail.html?id=8" class="product-card">
+          <a href="product-detail.php?id=8" class="product-card">
             <div class="product-image">
               <img src="images/fo.jpg" alt="Technical Shell Jacket" />
             </div>
@@ -132,7 +132,7 @@
     <section class="product-grid-section">
       <div class="container">
         <div class="product-grid">
-          <a href="product-detail.html?id=9" class="product-card">
+          <a href="product-detail.php?id=9" class="product-card">
             <div class="product-image">
               <img src="images/jeans.jpg" alt="Essential Sweatpants Black" />
             </div>
@@ -142,7 +142,7 @@
             </div>
           </a>
 
-          <a href="product-detail.html?id=10" class="product-card">
+          <a href="product-detail.php?id=10" class="product-card">
             <div class="product-image">
               <img src="images/jeans.jpg" alt="Essential Sweatpants Cream" />
             </div>
@@ -152,7 +152,7 @@
             </div>
           </a>
 
-          <a href="product-detail.html?id=11" class="product-card">
+          <a href="product-detail.php?id=11" class="product-card">
             <div class="product-image">
               <img src="images/jeans.jpg" alt="Relaxed Cargo Pants" />
             </div>
@@ -162,7 +162,7 @@
             </div>
           </a>
 
-          <a href="product-detail.html?id=12" class="product-card">
+          <a href="product-detail.php?id=12" class="product-card">
             <div class="product-image">
               <img src="images/jeans.jpg" alt="Wide-Leg Tech Pants" />
             </div>
@@ -182,7 +182,7 @@
     <section class="product-grid-section">
       <div class="container">
         <div class="product-grid">
-          <a href="product-detail.html?id=13" class="product-card">
+          <a href="product-detail.php?id=13" class="product-card">
             <div class="product-image">
               <img src="images/sjaal.jpg" alt="Minimal Cap Black" />
             </div>
@@ -192,7 +192,7 @@
             </div>
           </a>
 
-          <a href="product-detail.html?id=14" class="product-card">
+          <a href="product-detail.php?id=14" class="product-card">
             <div class="product-image">
               <img src="images/sjaal.jpg" alt="Minimal Cap Cream" />
             </div>
@@ -202,7 +202,7 @@
             </div>
           </a>
 
-          <a href="product-detail.html?id=15" class="product-card">
+          <a href="product-detail.php?id=15" class="product-card">
             <div class="product-image">
               <img src="images/sjaal.jpg" alt="Selfique Tote Bag" />
             </div>
@@ -212,7 +212,7 @@
             </div>
           </a>
 
-          <a href="product-detail.html?id=16" class="product-card">
+          <a href="product-detail.php?id=16" class="product-card">
             <div class="product-image">
               <img src="images/sjaal.jpg" alt="Selfique Socks Pack" />
             </div>
@@ -224,7 +224,7 @@
         </div>
       </div>
     </section>
+    
     <?php include_once("footer.inc.php"); ?>
-
   </body>
 </html>

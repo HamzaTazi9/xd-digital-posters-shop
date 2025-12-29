@@ -9,7 +9,8 @@ if(!empty($_POST)){
 
 
     if(empty($username) || empty($email) || empty($password)){
-        die("Alle velden zijn verplicht");
+        header("Location: register.php?error=empty");
+        exit;
     }
 
     $conn = Db::getConnection();
@@ -20,7 +21,8 @@ if(!empty($_POST)){
     $check->execute();
 
     if($check->rowCount() > 0){
-        die("Email bestaat al");
+        header("Location: register.php?error=email_exists");
+        exit;
     }
 
 
@@ -37,6 +39,7 @@ if(!empty($_POST)){
     $statement->bindValue(":password", $hashedPassword);
     $statement->execute();
 
-    echo "Registratie gelukt";
+    header("Location: register.php?success=1");
+exit;;
 } 
 

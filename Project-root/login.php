@@ -16,6 +16,18 @@
           <h1>Welcome Back</h1>
           <p class="auth-subtitle">Login to your account</p>
 
+          <?php if(isset($_GET['error'])): ?>
+
+<?php if($_GET['error'] === 'empty'): ?>
+    <p class="error">Gelieve alle velden in te vullen</p>
+<?php else: ?>
+    <p class="error">Email of wachtwoord is incorrect</p>
+<?php endif; ?>
+
+<?php endif; ?>
+
+
+
           <form action="login_process.php" method="POST" class="auth-form">
             <div class="form-group">
               <label>Email</label>

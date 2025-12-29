@@ -8,12 +8,13 @@ if(!empty($_POST)){
     $password = $_POST['password'];
 
     if(empty($email) || empty($password)){
-        die("Alle velden zijn verplicht");
+        header("Location: login.php?error=empty");
+        exit;
     }
 
     $conn = Db::getConnection();
 
-    
+
     $statement = $conn->prepare("SELECT * FROM users WHERE email = :email");
     $statement->bindValue(":email", $email);
     $statement->execute();
@@ -21,7 +22,8 @@ if(!empty($_POST)){
     $user = $statement->fetch(PDO::FETCH_ASSOC);
 
     if(!$user){
-        die("Gebruiker bestaat niet");
+        header("Location: login.php?error=wrong");
+        exit;
     }
 
 
@@ -36,6 +38,7 @@ if(!empty($_POST)){
         exit;
     }
     else {
-        die("Wachtwoord is fout");
+        header("Location: login.php?error=wrong");
+        exit;
     }
 }

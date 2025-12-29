@@ -8,7 +8,7 @@
     <title>Document</title>
     <link rel="stylesheet" href="css/style.css" />
   </head>
-  <body>
+  <body> 
   <?php include_once("nav.inc.php"); ?>
     <section class="auth-section">
       <div class="auth-container">
@@ -40,7 +40,7 @@
             <button type="submit" class="auth-btn">Login</button>
 
             <p class="auth-switch">
-              Don't have an account? <a href="register.html">Create one</a>
+              Don't have an account? <a href="register.php">Create one</a>
             </p>
           </form>
         </div>

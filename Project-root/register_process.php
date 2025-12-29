@@ -38,4 +38,5 @@ if(!empty($_POST)){
     $statement->execute();
 
     echo "Registratie gelukt";
-}
+} 
+

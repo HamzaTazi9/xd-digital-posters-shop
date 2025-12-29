@@ -31,6 +31,10 @@ if(session_status() === PHP_SESSION_NONE){
   <img src="images/online-shopping.png" alt="">
 </a>
 
+<?php if($_SESSION["role"] === "admin"): ?>
+  <a href="admin_products.php">Admin panel</a>
+<?php endif; ?>
+
 <a href="logout.php">Logout</a>
 
 <?php else: ?>

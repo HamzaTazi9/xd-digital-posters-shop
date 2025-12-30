@@ -15,7 +15,7 @@ if(session_status() === PHP_SESSION_NONE){
         </nav>
 
 
-        <div class="nav-actions">
+ <div class="nav-actions">
     
         <?php if(isset($_SESSION["user_id"])): ?>
 
@@ -26,7 +26,9 @@ if(session_status() === PHP_SESSION_NONE){
 <span class="wallet">
   Wallet: <?php echo $_SESSION["wallet"]; ?> 🪙
 </span>
-
+<?php if($_SESSION["role"] === "admin"): ?>
+    <a href="admin_products_list.php">Admin producten</a>
+  <?php endif; ?>
 <a href="cart.php">
   <img src="images/online-shopping.png" alt="">
 </a>

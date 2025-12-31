@@ -7,6 +7,12 @@ if(!isset($_SESSION["user_id"]) || $_SESSION["role"] !== "admin"){
 }
 require_once __DIR__ . "/classes/Db.php";
 
+$conn = Db::getConnection();
+
+$catStatement = $conn->prepare("SELECT * FROM categories");
+$catStatement->execute();
+
+$categories = $catStatement->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
 <?php include_once("nav.inc.php"); ?>
@@ -30,8 +36,17 @@ require_once __DIR__ . "/classes/Db.php";
     <label>Prijs (€)</label>
     <input type="number" name="price" step="0.01" required>
 
-    <label>Categorie ID</label>
-    <input type="number" name="category_id" required>
+    <label>Categorie</label>
+<select name="category_id" required>
+    <option value="">-- Kies een categorie --</option>
+
+    <?php foreach($categories as $category): ?>
+        <option value="<?php echo $category['id']; ?>">
+            <?php echo htmlspecialchars($category['name']); ?>
+        </option>
+    <?php endforeach; ?>
+</select>
+
 
     <button type="submit">Product opslaan</button>
 

@@ -26,7 +26,7 @@ if(!$product){
 
 <h1>Product bewerken</h1>
 
-<form action="admin_edit_product_process.php" method="POST">
+<form action="admin_edit_product_process.php" method="POST" enctype="multipart/form-data">
 
     <input type="hidden" name="id"
            value="<?php echo $product['id']; ?>">
@@ -42,6 +42,29 @@ if(!$product){
     <label>Categorie ID</label>
     <input type="number" name="category_id"
            value="<?php echo $product['category_id']; ?>">
+
+               
+    <br><br>
+
+<p>Huidige afbeelding:</p>
+
+<?php if(!empty($product['image'])): ?>
+    <img src="<?php echo $product['image']; ?>"
+         width="150">
+<?php else: ?>
+    <p>(Geen afbeelding)</p>
+<?php endif; ?>
+
+
+<input type="hidden" name="old_image"
+       value="<?php echo $product['image']; ?>">
+
+<br>
+
+<label>Nieuwe afbeelding (optioneel)</label>
+<input type="file" name="image">
+
+<br><br>
 
     <button type="submit">Opslaan</button>
 

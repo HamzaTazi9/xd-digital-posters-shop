@@ -41,9 +41,12 @@ if(!$product){
     <h1><?php echo htmlspecialchars($product['name']); ?></h1>
 
     <img 
-        src="<?php echo !empty($product['image']) ? $product['image'] : 'images/placeholder.jpg'; ?>"
-        alt="<?php echo htmlspecialchars($product['name']); ?>"
-    >
+    src="<?php echo !empty($product['image']) 
+        ? htmlspecialchars($product['image']) 
+        : 'images/placeholder.jpg'; ?>"
+    alt="<?php echo htmlspecialchars($product['name']); ?>"
+>
+
 
     <p>Prijs: € <?php echo $product['price']; ?></p>
 

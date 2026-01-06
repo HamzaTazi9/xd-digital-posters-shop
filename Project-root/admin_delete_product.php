@@ -16,12 +16,28 @@ $id = $_POST["id"];
 
 $conn = Db::getConnection();
 
-$statement = $conn->prepare("
+
+$getProduct = $conn->prepare("SELECT image FROM products WHERE id = :id");
+$getProduct->bindValue(":id", $id, PDO::PARAM_INT);
+$getProduct->execute();
+
+$product = $getProduct->fetch(PDO::FETCH_ASSOC);
+
+$delete = $conn->prepare("
     DELETE FROM products
     WHERE id = :id
 ");
-$statement->bindValue(":id", $id, PDO::PARAM_INT);
-$statement->execute();
+$delete->bindValue(":id", $id, PDO::PARAM_INT);
+$delete->execute();
+
+$imagePath = __DIR__ . "/" . $product["image"];
+
+$imagePath = __DIR__ . "/" . $product["image"];
+
+if(!empty($product["image"]) && file_exists($imagePath)){
+    unlink($imagePath);
+}
+
 
 header("Location: admin_products_list.php?success=deleted");
 exit;

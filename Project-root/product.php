@@ -3,35 +3,39 @@ require_once __DIR__ . "/classes/Db.php";
 
 $conn = Db::getConnection();
 
-// Essentials
-$essentials = $conn->prepare("SELECT * FROM products WHERE category_id = 1");
-$essentials->execute();
-$essentials = $essentials->fetchAll(PDO::FETCH_ASSOC);
+$statement = $conn->prepare("
+    SELECT p.*, c.name AS category_name
+    FROM products p
+    LEFT JOIN categories c
+    ON p.category_id = c.id
+    ORDER BY c.id ASC
+");
+$statement->execute();
 
-// Outerwear
-$outerwear = $conn->prepare("SELECT * FROM products WHERE category_id = 2");
-$outerwear->execute();
-$outerwear = $outerwear->fetchAll(PDO::FETCH_ASSOC);
+$products = $statement->fetchAll(PDO::FETCH_ASSOC);
 
-// Bottoms
-$bottoms = $conn->prepare("SELECT * FROM products WHERE category_id = 3");
-$bottoms->execute();
-$bottoms = $bottoms->fetchAll(PDO::FETCH_ASSOC);
+$categories = [];
 
-// Accessories
-$accessories = $conn->prepare("SELECT * FROM products WHERE category_id = 4");
-$accessories->execute();
-$accessories = $accessories->fetchAll(PDO::FETCH_ASSOC);
+foreach($products as $product){
+    $catName = $product["category_name"] ?? "Onbekende categorie";
+    $categories[$catName][] = $product;
+}
 
 function renderProduct($product){
 
 
   
-  $image = !empty($product['image'])
-    ? $product['image']
-    : "images/placeholder.jpg";
+  $image = "images/placeholder.jpg";
 
-?>
+  if(!empty($product['image'])){
+      $image = $product['image'];
+
+    
+      if(strpos($image, "uploads/") === 0){
+          $image = $image;
+      }
+  }
+  ?>
   <a href="product-detail.php?id=<?php echo $product['id']; ?>" class="product-card">
 
       <div class="product-image">
@@ -80,28 +84,26 @@ function renderProduct($product){
 </section>
 
 
-<section class="category-title"><h2>Selfique Essentials</h2></section>
-<section class="product-grid-section"><div class="container"><div class="product-grid">
-  <?php foreach($essentials as $product){ renderProduct($product); } ?>
-</div></div></section>
+<?php foreach($categories as $categoryName => $productsInCat): ?>
 
+<section class="category-title">
+  <h2><?php echo htmlspecialchars($categoryName); ?></h2>
+</section>
 
-<section class="category-title"><h2>Selfique Outerwear</h2></section>
-<section class="product-grid-section"><div class="container"><div class="product-grid">
-  <?php foreach($outerwear as $product){ renderProduct($product); } ?>
-</div></div></section>
+<section class="product-grid-section">
+  <div class="container">
+    <div class="product-grid">
 
+        <?php foreach($productsInCat as $product): ?>
+            <?php renderProduct($product); ?>
+        <?php endforeach; ?>
 
-<section class="category-title"><h2>Selfique Bottoms</h2></section>
-<section class="product-grid-section"><div class="container"><div class="product-grid">
-  <?php foreach($bottoms as $product){ renderProduct($product); } ?>
-</div></div></section>
+    </div>
+  </div>
+</section>
 
+<?php endforeach; ?>
 
-<section class="category-title"><h2>Selfique Accessories</h2></section>
-<section class="product-grid-section"><div class="container"><div class="product-grid">
-  <?php foreach($accessories as $product){ renderProduct($product); } ?>
-</div></div></section>
 
 
 <?php include_once("footer.inc.php"); ?>

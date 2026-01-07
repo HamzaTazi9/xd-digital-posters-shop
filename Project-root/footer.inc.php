@@ -26,7 +26,7 @@
             <h4 class="footer-title">Account</h4>
             <a href="login.php">Login</a>
             <a href="register.php">Register</a>
-            <a href="orders.html">My Orders</a>
+            <a href="my_orders.php">My Orders</a>
             <a href="profile.php">Profile</a>
           </div>
         </div>

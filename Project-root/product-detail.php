@@ -62,6 +62,15 @@ if(!$product){
 
 </section>
 
+<form method="POST" action="cart_add.php">
+    <input type="hidden" name="product_id" value="<?php echo $product['id']; ?>">
+
+    <label>Aantal</label>
+    <input type="number" name="quantity" value="1" min="1">
+
+    <button type="submit">Toevoegen aan winkelmand</button>
+</form>
+
 <?php include_once("footer.inc.php"); ?>
 
 </body>

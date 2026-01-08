@@ -1,4 +1,64 @@
+<?php
+require_once __DIR__ . "/classes/Db.php";
 
+$conn = Db::getConnection();
+
+$statement = $conn->prepare("
+    SELECT p.*, c.name AS category_name
+    FROM products p
+    LEFT JOIN categories c
+    ON p.category_id = c.id
+    ORDER BY c.id ASC
+");
+$statement->execute();
+
+$products = $statement->fetchAll(PDO::FETCH_ASSOC);
+
+$categories = [];
+
+foreach($products as $product){
+    $catName = $product["category_name"] ?? "Onbekende categorie";
+    $categories[$catName][] = $product;
+}
+
+function renderProduct($product){
+
+
+  
+  $image = "images/placeholder.jpg";
+
+  if(!empty($product['image'])){
+      $image = $product['image'];
+
+    
+      if(strpos($image, "uploads/") === 0){
+          $image = $image;
+      }
+  }
+  ?>
+  <a href="product-detail.php?id=<?php echo $product['id']; ?>" class="product-card">
+
+      <div class="product-image">
+      <img 
+  src="<?php echo htmlspecialchars($image); ?>"
+  alt="<?php echo htmlspecialchars($product['name']); ?>"
+>
+      </div>
+
+      <div class="product-info">
+          <h3 class="product-name">
+              <?php echo htmlspecialchars($product['name']); ?>
+          </h3>
+
+          <p class="product-price">
+              € <?php echo $product['price']; ?>
+          </p>
+      </div>
+
+  </a>
+<?php
+}
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -25,205 +85,28 @@
       </div>
     </section>
 
-    <section class="category-title">
-      <h2>Selfique Essentials</h2>
-    </section>
+    <?php include_once("nav.inc.php"); ?>
 
-    <section class="product-grid-section">
-      <div class="container">
-        <div class="product-grid">
-          <a href="product-detail.php?id=1" class="product-card">
-            <div class="product-image">
-              <img src="images/hoodie.jpg" alt="Essential Hoodie Black" />
-            </div>
-            <div class="product-info">
-              <h3 class="product-name">Essential Hoodie Black</h3>
-              <p class="product-price">79€</p>
-            </div>
-          </a>
 
-          <a href="product-detail.php?id=2" class="product-card">
-            <div class="product-image">
-              <img src="images/hoodie.jpg" alt="Essential Hoodie Cream" />
-            </div>
-            <div class="product-info">
-              <h3 class="product-name">Essential Hoodie Cream</h3>
-              <p class="product-price">79€</p>
-            </div>
-          </a>
+<?php foreach($categories as $categoryName => $productsInCat): ?>
 
-          <a href="product-detail.php?id=3" class="product-card">
-            <div class="product-image">
-              <img src="images/hoodie.jpg" alt="Signature Tee White" />
-            </div>
-            <div class="product-info">
-              <h3 class="product-name">Signature Tee White</h3>
-              <p class="product-price">39€</p>
-            </div>
-          </a>
+<section class="category-title">
+  <h2><?php echo htmlspecialchars($categoryName); ?></h2>
+</section>
 
-          <a href="product-detail.php?id=4" class="product-card">
-            <div class="product-image">
-              <img src="images/hoodie.jpg" alt="Signature Tee Black" />
-            </div>
-            <div class="product-info">
-              <h3 class="product-name">Signature Tee Black</h3>
-              <p class="product-price">39€</p>
-            </div>
-          </a>
-        </div>
-      </div>
-    </section>
+<section class="product-grid-section">
+  <div class="container">
+    <div class="product-grid">
 
-    <section class="category-title">
-      <h2>Selfique Outerwear</h2>
-    </section>
+        <?php foreach($productsInCat as $product): ?>
+            <?php renderProduct($product); ?>
+        <?php endforeach; ?>
 
-    <section class="product-grid-section">
-      <div class="container">
-        <div class="product-grid">
-          <a href="product-detail.php?id=5" class="product-card">
-            <div class="product-image">
-              <img src="images/fo.jpg" alt="Puffer Jacket Black" />
-            </div>
-            <div class="product-info">
-              <h3 class="product-name">Puffer Jacket Black</h3>
-              <p class="product-price">129€</p>
-            </div>
-          </a>
+    </div>
+  </div>
+</section>
 
-          <a href="product-detail.php?id=6" class="product-card">
-            <div class="product-image">
-              <img src="images/fo.jpg" alt="Puffer Jacket Cream" />
-            </div>
-            <div class="product-info">
-              <h3 class="product-name">Puffer Jacket Cream</h3>
-              <p class="product-price">129€</p>
-            </div>
-          </a>
-
-          <a href="product-detail.php?id=7" class="product-card">
-            <div class="product-image">
-              <img src="images/fo.jpg" alt="Oversized Windbreaker" />
-            </div>
-            <div class="product-info">
-              <h3 class="product-name">Oversized Windbreaker</h3>
-              <p class="product-price">99€</p>
-            </div>
-          </a>
-
-          <a href="product-detail.php?id=8" class="product-card">
-            <div class="product-image">
-              <img src="images/fo.jpg" alt="Technical Shell Jacket" />
-            </div>
-            <div class="product-info">
-              <h3 class="product-name">Technical Shell Jacket</h3>
-              <p class="product-price">149€</p>
-            </div>
-          </a>
-        </div>
-      </div>
-    </section>
-
-    <section class="category-title">
-      <h2>Selfique Bottoms</h2>
-    </section>
-
-    <section class="product-grid-section">
-      <div class="container">
-        <div class="product-grid">
-          <a href="product-detail.php?id=9" class="product-card">
-            <div class="product-image">
-              <img src="images/jeans.jpg" alt="Essential Sweatpants Black" />
-            </div>
-            <div class="product-info">
-              <h3 class="product-name">Essential Sweatpants Black</h3>
-              <p class="product-price">59€</p>
-            </div>
-          </a>
-
-          <a href="product-detail.php?id=10" class="product-card">
-            <div class="product-image">
-              <img src="images/jeans.jpg" alt="Essential Sweatpants Cream" />
-            </div>
-            <div class="product-info">
-              <h3 class="product-name">Essential Sweatpants Cream</h3>
-              <p class="product-price">59€</p>
-            </div>
-          </a>
-
-          <a href="product-detail.php?id=11" class="product-card">
-            <div class="product-image">
-              <img src="images/jeans.jpg" alt="Relaxed Cargo Pants" />
-            </div>
-            <div class="product-info">
-              <h3 class="product-name">Relaxed Cargo Pants</h3>
-              <p class="product-price">69€</p>
-            </div>
-          </a>
-
-          <a href="product-detail.php?id=12" class="product-card">
-            <div class="product-image">
-              <img src="images/jeans.jpg" alt="Wide-Leg Tech Pants" />
-            </div>
-            <div class="product-info">
-              <h3 class="product-name">Wide-Leg Tech Pants</h3>
-              <p class="product-price">79€</p>
-            </div>
-          </a>
-        </div>
-      </div>
-    </section>
-
-    <section class="category-title">
-      <h2>Selfique Accessories</h2>
-    </section>
-
-    <section class="product-grid-section">
-      <div class="container">
-        <div class="product-grid">
-          <a href="product-detail.php?id=13" class="product-card">
-            <div class="product-image">
-              <img src="images/sjaal.jpg" alt="Minimal Cap Black" />
-            </div>
-            <div class="product-info">
-              <h3 class="product-name">Minimal Cap Black</h3>
-              <p class="product-price">29€</p>
-            </div>
-          </a>
-
-          <a href="product-detail.php?id=14" class="product-card">
-            <div class="product-image">
-              <img src="images/sjaal.jpg" alt="Minimal Cap Cream" />
-            </div>
-            <div class="product-info">
-              <h3 class="product-name">Minimal Cap Cream</h3>
-              <p class="product-price">29€</p>
-            </div>
-          </a>
-
-          <a href="product-detail.php?id=15" class="product-card">
-            <div class="product-image">
-              <img src="images/sjaal.jpg" alt="Selfique Tote Bag" />
-            </div>
-            <div class="product-info">
-              <h3 class="product-name">Selfique Tote Bag</h3>
-              <p class="product-price">19€</p>
-            </div>
-          </a>
-
-          <a href="product-detail.php?id=16" class="product-card">
-            <div class="product-image">
-              <img src="images/sjaal.jpg" alt="Selfique Socks Pack" />
-            </div>
-            <div class="product-info">
-              <h3 class="product-name">Selfique Socks Pack</h3>
-              <p class="product-price">14€</p>
-            </div>
-          </a>
-        </div>
-      </div>
-    </section>
+<?php endforeach; ?>
     
     <?php include_once("footer.inc.php"); ?>
   </body>

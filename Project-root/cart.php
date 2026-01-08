@@ -5,62 +5,75 @@ if(!isset($_SESSION["cart"])){
     $_SESSION["cart"] = [];
 }
 ?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Winkelmandje</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
 
 <?php include_once("nav.inc.php"); ?>
 
-<h1>Winkelmandje</h1>
+<section class="cart-section">
+    <div class="container">
 
-<?php if(empty($_SESSION["cart"])): ?>
+        <h1>Winkelmandje</h1>
 
-<p>Je winkelmandje is leeg.</p>
-<a href="product.php">← Verder winkelen</a>
+        <?php if(empty($_SESSION["cart"])): ?>
 
-<?php else: ?>
+            <p>Je winkelmandje is leeg.</p>
+            <a href="product.php" class="btn">← Verder winkelen</a>
 
-<table border="1" cellpadding="10">
-<tr>
-    <th>Product</th>
-    <th>Prijs</th>
-    <th>Aantal</th>
-    <th>Subtotaal</th>
-    <th>Actie</th>
-</tr>
+        <?php else: ?>
 
-<?php 
-$total = 0;
+            <table class="cart-table">
+                <tr>
+                    <th>Product</th>
+                    <th>Prijs</th>
+                    <th>Aantal</th>
+                    <th>Subtotaal</th>
+                    <th>Actie</th>
+                </tr>
 
-foreach($_SESSION["cart"] as $id => $item):
+                <?php 
+                $total = 0;
 
-    $qty = $item["qty"] ?? $item["quantity"] ?? 1;
+                foreach($_SESSION["cart"] as $id => $item):
 
-    $subtotal = $item["price"] * $qty;
-    $total += $subtotal;
-?>
+                    $qty = $item["qty"] ?? $item["quantity"] ?? 1;
+                    $subtotal = $item["price"] * $qty;
+                    $total += $subtotal;
+                ?>
+                <tr>
+                    <td><?php echo htmlspecialchars($item["name"]); ?></td>
+                    <td>€ <?php echo number_format($item["price"], 2); ?></td>
+                    <td><?php echo $qty; ?></td>
+                    <td>€ <?php echo number_format($subtotal, 2); ?></td>
+                    <td>
+                        <a href="cart_remove.php?id=<?php echo $id; ?>" class="link-danger">
+                            Verwijderen
+                        </a>
+                    </td>
+                </tr>
+                <?php endforeach; ?>
+            </table>
 
-<tr>
-    <td><?php echo htmlspecialchars($item["name"]); ?></td>
+            <h3 class="cart-total">
+                Totaal: € <?php echo number_format($total, 2); ?>
+            </h3>
 
-    <td>€ <?php echo number_format($item["price"], 2); ?></td>
+            <a href="checkout.php" class="btn-primary">
+                Bestelling plaatsen
+            </a>
 
-    <td><?php echo $qty; ?></td>
+        <?php endif; ?>
 
-    <td>€ <?php echo number_format($subtotal, 2); ?></td>
-
-    <td>
-        <a href="cart_remove.php?id=<?php echo $id; ?>">
-            Verwijderen
-        </a>
-    </td>
-</tr>
-
-<?php endforeach; ?>
-
-</table>
-
-<h3>Totaal: € <?php echo number_format($total, 2); ?></h3>
-
-<a href="checkout.php">Bestelling plaatsen</a>
-
-<?php endif; ?>
+    </div>
+</section>
 
 <?php include_once("footer.inc.php"); ?>
+
+</body>
+</html>

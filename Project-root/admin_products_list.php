@@ -13,75 +13,81 @@ $statement = $conn->prepare("
     SELECT p.id, p.name, p.price, c.name AS category
     FROM products p
     LEFT JOIN categories c ON p.category_id = c.id
+    ORDER BY p.id DESC
 ");
 $statement->execute();
 
 $products = $statement->fetchAll(PDO::FETCH_ASSOC);
 ?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Product beheer</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
 
 <?php include_once("nav.inc.php"); ?>
 
-<h1>Product beheer</h1>
+<section class="admin-section">
+    <div class="admin-container">
 
-<a href="admin_products.php">+ Nieuw product</a>
+        <h1>Product beheer</h1>
 
-<h1>Product beheer</h1>
+        <a href="admin_products.php" class="btn-primary admin-add-btn">
+            + Nieuw product
+        </a>
 
-<a href="admin_products.php">+ Nieuw product</a>
+        <?php if(isset($_GET['success'])): ?>
+            <p class="success">Actie succesvol uitgevoerd</p>
+        <?php endif; ?>
 
-<?php if(isset($_GET['success'])): ?>
-    <p class="success">Actie uitgevoerd</p>
-<?php endif; ?>
+        <table class="admin-table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Titel</th>
+                    <th>Prijs</th>
+                    <th>Categorie</th>
+                    <th>Acties</th>
+                </tr>
+            </thead>
+            <tbody>
+            <?php foreach($products as $product): ?>
+                <tr>
+                    <td><?php echo $product["id"]; ?></td>
+                    <td><?php echo htmlspecialchars($product["name"]); ?></td>
+                    <td>€ <?php echo number_format($product["price"], 2); ?></td>
+                    <td><?php echo htmlspecialchars($product["category"] ?? "—"); ?></td>
+                    <td class="admin-actions">
 
-<br><br>
+                        <a href="admin_edit_product.php?id=<?php echo $product['id']; ?>">
+                            Wijzigen
+                        </a>
 
-<table border="1" cellpadding="10">
-    <tr>
-        <th>ID</th>
-        <th>Titel</th>
-        <th>Prijs</th>
-        <th>Categorie</th>
-        <th>Acties</th>
-    </tr>
+                        <form action="admin_delete_product.php"
+                              method="POST"
+                              onsubmit="return confirm('Zeker dat je dit product wil verwijderen?')">
 
-    <?php foreach($products as $product): ?>
-    <tr>
-        <td><?php echo $product["id"]; ?></td>
+                            <input type="hidden" name="id"
+                                   value="<?php echo $product['id']; ?>">
 
-        <td><?php echo htmlspecialchars($product["name"]); ?></td>
+                            <button type="submit" class="link-danger">
+                                Verwijderen
+                            </button>
+                        </form>
 
-        <td>€ <?php echo $product["price"]; ?></td>
+                    </td>
+                </tr>
+            <?php endforeach; ?>
+            </tbody>
+        </table>
 
-        <td>
-            <?php echo $product["category"] ?? "—"; ?>
-        </td>
-
-        <td>
-
-            <a href="admin_edit_product.php?id=<?php echo $product['id']; ?>">
-                Wijzigen
-            </a>
-
-            |
-
-            <form action="admin_delete_product.php"
-                  method="POST"
-                  style="display:inline">
-
-                <input type="hidden" name="id"
-                       value="<?php echo $product['id']; ?>">
-
-                <button type="submit"
-                    onclick="return confirm('Zeker dat je dit product wil verwijderen?')">
-                    Verwijderen
-                </button>
-
-            </form>
-
-        </td>
-    </tr>
-    <?php endforeach; ?>
-</table>
-
+    </div>
+</section>
 
 <?php include_once("footer.inc.php"); ?>
+
+</body>
+</html>

@@ -1,7 +1,5 @@
 # xd-digital-shop
 
-# Webshop Project
-
 ## Git Repository
 
 https://github.com/HamzaTazi9/xd-digital-posters-shop.git
@@ -33,3 +31,5 @@ gebruikt prepared statements tegen SQL-injectie en basisbescherming tegen XSS.
 De online deployment is niet tijdig stabiel gekregen.
 
 ## Productvideo
+
+https://youtu.be/hqT0er_-Zho

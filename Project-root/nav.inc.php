@@ -24,7 +24,7 @@ if(session_status() === PHP_SESSION_NONE){
 </span>
 
 <span class="wallet">
-  Wallet: <?php echo $_SESSION["wallet"]; ?> 🪙
+  Wallet: <?php echo $_SESSION["wallet"]; ?> €
 </span>
 <?php if($_SESSION["role"] === "admin"): ?>
     <a href="admin_products_list.php">Admin producten</a>

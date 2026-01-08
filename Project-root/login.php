@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -18,15 +16,13 @@
 
           <?php if(isset($_GET['error'])): ?>
 
-<?php if($_GET['error'] === 'empty'): ?>
-    <p class="error">Gelieve alle velden in te vullen</p>
-<?php else: ?>
-    <p class="error">Email of wachtwoord is incorrect</p>
-<?php endif; ?>
+            <?php if($_GET['error'] === 'empty'): ?>
+              <p class="error">Gelieve alle velden in te vullen</p>
+            <?php else: ?>
+              <p class="error">Email of wachtwoord is incorrect</p>
+            <?php endif; ?>
 
-<?php endif; ?>
-
-
+          <?php endif; ?>
 
           <form action="login_process.php" method="POST" class="auth-form">
             <div class="form-group">

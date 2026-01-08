@@ -670,6 +670,23 @@ hr {
   border-top: 1px solid #ddd;
 }
 
+.wallet {
+  text-decoration: none;
+  color: #ececec;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  transition: opacity 0.3s ease;
+}
+span {
+  text-decoration: none;
+  color: #ececec;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  transition: opacity 0.3s ease;
+}
+
 @media (max-width: 768px) {
   .product-detail {
     padding: 120px 20px 40px;

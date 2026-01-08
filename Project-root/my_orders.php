@@ -53,7 +53,7 @@ $orders = $statement->fetchAll(PDO::FETCH_ASSOC);
     <td><?php echo $order["created_at"]; ?></td>
 
     <td>
-        <a href="my_order_detail.php?id=<?php echo $order['id']; ?>">
+        <a href="order_detail.php?id=<?php echo $order['id']; ?>">
             Bekijk bestelling
         </a>
     </td>
